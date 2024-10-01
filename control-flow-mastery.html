@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Control Flow Mastery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .note {
+            background-color: #ffffd9;
+            border-left: 5px solid #ffeb3b;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .theory {
+            background-color: #ddffd9;
+            border-left: 5px solid #5cff3b;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .exercise {
+            background-color: #fbfeff;
+            border-left: 5px solid #03a9f4;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Python Control Flow Mastery</h1>
+    
+    <table>
+        <tr>
+            <th>Statement</th>
+            <th>Purpose</th>
+            <th>Typical Context</th>
+        </tr>
+        <tr>
+            <td style="color: #2e8b57; font-weight: bold;">return</td> 
+            <td>Exit a function and optionally return a value</td>
+            <td>Inside functions (def)</td>
+        </tr>
+        <tr>
+            <td style="color: #ffcc00; font-weight: bold;">raise</td> 
+            <td>Trigger an exception</td>
+            <td>Often inside a try block of a try-except statement</td>
+        </tr>
+        <tr>
+            <td style="color: #ff4500; font-weight: bold;">break</td> 
+            <td>Exit the current loop</td>
+            <td>Inside loops</td>
+        </tr>
+        <tr>
+            <td style="color: #1e90ff; font-weight: bold;">continue</td> 
+            <td>Skip the rest of the current loop iteration</td>
+            <td>Inside loops</td>
+        </tr>
+    </table>
+
+    <h3>Essential Examples</h3>
+
+    <pre>
+<span style="font-weight: bold;"># return example</span>
+def square(x):
+    <span style="color: #2e8b57; font-weight: bold;">return</span> x * x
+
+<span style="font-weight: bold;"># raise example</span>
+try:
+    if user_age < 0:
+        <span style="color: #ffcc00; font-weight: bold;">raise</span> Exception("Age cannot be negative")
+    print("Age is valid")
+except Exception as error:
+    print(error)
+
+<span style="font-weight: bold;"># break example</span>
+for number in range(1, 10):
+    if number == 5:
+        <span style="color: #ff4500; font-weight: bold;">break</span>
+    print(number)
+
+<span style="font-weight: bold;"># continue example</span>
+for number in range(1, 6):
+    if number == 3:
+        <span style="color: #1e90ff; font-weight: bold;">continue</span>
+    print(number)
+    </pre>
+
+    <div class="note">
+        <strong>Note:</strong> Mastery of control flow means understanding when and how to alter the natural order of execution in your program. Keywords like <span style="color: #2e8b57; font-weight: bold;">return</span>, <span style="color: #ffcc00; font-weight: bold;">raise</span>, <span style="color: #ff4500; font-weight: bold;">break</span>, and <span style="color: #1e90ff; font-weight: bold;">continue</span> are your tools for directing the flow—whether you're returning a result, handling errors, breaking out of loops, or skipping iterations inside of a for loop or while loop. Use them wisely to craft efficient, readable, and effective code.
+    </div>
+
+
+    <h2>Understanding Control Flow</h2>
+
+    <p>Control flow is the order in which individual statements, instructions, or function calls are executed in a program.</p>
+
+    <div class="exercise">
+        <h3>Exercise 1: Identifying Control Flow</h3>
+        <p>Look at the following code snippet and identify the control flow statements:</p>
+        <pre>
+    def process_numbers(numbers):
+        total = 0
+        for num in numbers:
+            if num < 0:
+                <span style="color: #1e90ff; font-weight: bold;">continue</span>
+            if num == 0:
+                <span style="color: #ffcc00; font-weight: bold;">raise</span> ValueError("Zero is not allowed")
+            if num > 100:
+                <span style="color: #ff4500; font-weight: bold;">break</span>
+
+            total += num  <span style="background-color: #f0f0f0; padding: 2px 4px;"># This statement is inside the for loop</span>
+
+        <span style="background-color: #f0f0f0; padding: 2px 4px;"># This statement is outside the for loop (executes after the for loop is done iterating)</span>
+        <span style="color: #2e8b57; font-weight: bold; font-size: larger;">return</span> total
+        </pre>
+        <p>Now, consider the function call:</p>
+        <pre>
+    numbers_list = [50, 20, -10, 10, 120, 80]
+    result = process_numbers(numbers_list)
+    print(result)
+        </pre>
+        <p>What if we removed the <strong><span style="color: #ff4500; font-weight: bold;">break</span></strong> statement (put `pass` instead of `break`)? How would this change the function's behavior? Try testing it in a Jupyter notebook!</p>
+    </div>
+
+    <div class="exercise">
+        <h3>Exercise 2: Early Returns in Action</h3>
+        <p>You're building a system to send messages via WhatsApp, but you want to ensure that empty messages are not sent. Your task is to implement early returns to handle this requirement. Create two functions:</p>
+        
+        <ul>
+            <li><strong>validate_and_send_message(message):</strong> This function should check if the message is empty after stripping whitespace. If it is, return early with an appropriate message. Otherwise, call the next function to send the message.</li>
+            <li><strong>send_message_via_whatsapp(message):</strong> This function should simply print out the message (simulating the behavior of sending it).</li>
+        </ul>
+        
+        <p>Complete the functions below, then test them in the # DEMO AREA by passing different message strings to `validate_and_send_message`, such as empty strings, strings with only spaces, and valid messages.</p>
+    
+        <pre>
+    def validate_and_send_message(message):
+        # TODO: Implement this function
+        # 1. Strip whitespace from the message
+        # 2. Check if the message is empty
+        # 3. If empty, print an error message <strong>and <span style="color: #2e8b57; font-weight: bold; font-size: larger;">return</span> early</strong>
+        # 4. If not empty, call send_message_via_whatsapp()
+        pass  # Remove this line when you start implementing
+    
+    def send_message_via_whatsapp(message):
+        print(f"Sending message via WhatsApp: {message}")
+    
+    # DEMO AREA
+    # TODO: Test your functions here with different inputs
+    # Example:
+    # validate_and_send_message("   ")  # Should not send
+    # validate_and_send_message("Hello!")  # Should send
+        </pre>
+    
+        <p>After implementing the functions, test them in a Jupyter. Consider the following questions:</p>
+        <ol>
+            <li>How does the <strong><span style="color: #2e8b57; font-weight: bold; font-size: larger;">return</strong> statement control the flow of your program?</li>
+            <li>What happens if you remove the early return? How does the function behave differently?</li>
+            <li>Can you think of other scenarios where early returns might be useful?</li>
+        </ol>
+    </div>
+
+    <div class="exercise">
+        <h3>Exercise 3: Concert Attendee Validation</h3>
+        <p>You're managing the entrance to a Taylor Swift concert. We have a system that checks whether someone has a valid ticket and whether they're a VIP. Your task is to implement the logic for processing attendees.</p>
+        
+        <ul>
+            <li>Complete the <strong>process_attendee(attendee_info)</strong> function that takes in a dictionary with attendee details.</li>
+            <li>Use <strong><span style="color: #ffcc00; font-weight: bold;">raise Exception</span></strong> to reject people without a valid ticket.</li>
+            <li>Print appropriate welcome messages for VIPs and regular attendees.</li>
+            <li>Use the <strong>not</strong> operator to check for invalid tickets.</li>
+        </ul>
+        
+        <p>Here's the structure of the attendee dictionary:</p>
+        <pre>
+    attendee = {
+        "has_valid_ticket": True,
+        "is_vip": False
+    }
+        </pre>
+        
+        <p>Complete the function below by filling in the correct conditions and implementing the required logic:</p>
+    
+        <pre><code>
+    def process_attendee(attendee_info):
+        try:
+            if ______:  # TODO: Check for invalid ticket
+                raise Exception("______")  # TODO: Add appropriate error message
+            
+            if ______:  # TODO: Check for VIP status
+                print("______")  # TODO: Add VIP welcome message
+            
+            print("Enjoy the concert!")  # This is provided for you
+        except Exception as e:
+            print(e)  # This handles the error inside the function
+    
+    # DEMO AREA
+    attendee_1 = {"has_valid_ticket": True, "is_vip": True}  # VIP
+    attendee_2 = {"has_valid_ticket": False, "is_vip": False}  # No valid ticket
+    attendee_3 = {"has_valid_ticket": True, "is_vip": False}  # Regular attendee
+    
+    process_attendee(attendee_1)  # Should print VIP access
+    process_attendee(attendee_2)  # Should handle the error inside
+    process_attendee(attendee_3)  # Should print regular concert entry
+</code></pre>
+    
+        <p>Your tasks:</p>
+        <ol>
+            <li>Fill in the condition to check for an invalid ticket using the <strong>not</strong> operator.</li>
+            <li>Complete the <strong>raise Exception</strong> statement with an appropriate error message.</li>
+            <li>Fill in the condition to check for VIP status.</li>
+            <li>Add an appropriate welcome message for VIP attendees.</li>
+        </ol>
+    
+        <p>After completing the function, run the code in the DEMO AREA to test your implementation. Make sure it correctly handles all three types of attendees: VIPs, regular attendees with valid tickets, and those without valid tickets.</p>
+    
+        <p>Questions to consider:</p>
+        <ul>
+            <li>How does raising an exception change the flow of the program?</li>
+            <li>Why is it important to handle exceptions inside the function in this case?</li>
+            <li>Can you think of other scenarios where you might use a similar pattern of exception handling?</li>
+        </ul>
+    </div>
+
+    <h2>Control Flow Best Practices</h2>
+
+    <p>As you become more comfortable with control flow statements, consider these best practices:</p>
+
+    <ul>
+        <li>Use early returns to simplify function logic and avoid deep nesting.</li>
+        <li>Raise specific exceptions to make error handling more precise.</li>
+        <li>Use 'break' judiciously to avoid unnecessary iterations.</li>
+        <li>Prefer 'continue' over complex if-else structures within loops when possible.</li>
+    </ul>
+
+    <div class="note">
+        <strong>Note:</strong> Remember, clear and readable code is often more important than clever, compact code. Use control flow statements to make your code more understandable, not more complex.
+    </div>
+
+    
+</body>
+</html>
